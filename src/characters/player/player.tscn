@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://iyto7vy3t4vu"]
+
+[ext_resource type="Script" uid="uid://cg2x1b33sdavc" path="res://src/characters/player/player.gd" id="1_bxhu7"]
+[ext_resource type="Texture2D" uid="uid://3sp0ractpnii" path="res://assets/placeholders/player_marx_placeholder.png" id="2_7nd6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1r1iw"]
+size = Vector2(26, 60)
+
+[node name="Player" type="CharacterBody2D" unique_id=819066437]
+script = ExtResource("1_bxhu7")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=129878937]
+position_smoothing_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=92725933]
+texture = ExtResource("2_7nd6e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1445255184]
+shape = SubResource("RectangleShape2D_1r1iw")
