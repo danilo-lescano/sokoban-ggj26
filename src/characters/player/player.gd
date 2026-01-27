@@ -1,15 +1,18 @@
 extends CharacterBody2D
 
-const DISTANCE: float = 64.0
-const DURATION: float = 0.5
+const MOVEMENT_DISTANCE: float = 64.0
+const MOVEMENT_DURATION: float = 0.5
 
-enum State {IDLE, MOVING}
+enum State { IDLE, MOVING }
 
 @onready var curr_state: State = State.IDLE
 
+
 func _physics_process(_delta: float) -> void:
 	if curr_state == State.IDLE:
-		var direction: Vector2 = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
+		var direction: Vector2 = Vector2(
+			Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down")
+		)
 
 		if direction.x:
 			move_player(Vector2(direction.x, 0))
@@ -23,7 +26,12 @@ func move_player(direction: Vector2) -> void:
 	curr_state = State.MOVING
 
 	@warning_ignore("return_value_discarded")
-	tween.tween_property(self, "position", direction * DISTANCE, DURATION).as_relative().set_trans(Tween.TRANS_SINE)
+	(
+		tween
+		. tween_property(self, "position", direction * MOVEMENT_DISTANCE, MOVEMENT_DURATION)
+		. as_relative()
+		. set_trans(Tween.TRANS_SINE)
+	)
 
 	@warning_ignore("return_value_discarded")
 	tween.connect("finished", _set_state_idle)
