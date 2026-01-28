@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://4sj2ub4fjpt0"]
 
-[ext_resource type="PackedScene" uid="uid://iyto7vy3t4vu" path="res://src/characters/player/player.tscn" id="1_7uq6d"]
+[ext_resource type="PackedScene" uid="uid://iyto7vy3t4vu" path="res://src/objects/player/player.tscn" id="1_7uq6d"]
+[ext_resource type="PackedScene" uid="uid://c0i1pixjjni20" path="res://src/objects/props/caixa/caixa.tscn" id="2_3msxb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3msxb"]
 size = Vector2(64, 64)
@@ -8,9 +9,13 @@ size = Vector2(64, 64)
 [node name="Game" type="Node2D" unique_id=2129355768]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2109665768]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1643596592]
 shape = SubResource("RectangleShape2D_3msxb")
 
 [node name="Player" parent="." unique_id=819066437 instance=ExtResource("1_7uq6d")]
-position = Vector2(34, 63)
+position = Vector2(64, 64)
+
+[node name="Caixa" parent="." unique_id=497083791 instance=ExtResource("2_3msxb")]
+position = Vector2(-64, 64)

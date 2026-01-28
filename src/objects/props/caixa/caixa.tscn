@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://c0i1pixjjni20"]
+
+[ext_resource type="Script" uid="uid://dqkawl750gyc7" path="res://src/objects/props/caixa/caixa.gd" id="1_shnb5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8thq"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shnb5"]
+size = Vector2(16, 16)
+
+[node name="Caixa" type="AnimatableBody2D" unique_id=497083791 node_paths=PackedStringArray("RayUP", "RayDown", "RayLeft", "RayRight")]
+collision_layer = 2
+script = ExtResource("1_shnb5")
+RayUP = NodePath("RayUp")
+RayDown = NodePath("RayDown")
+RayLeft = NodePath("RayLeft")
+RayRight = NodePath("RayRight")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=89303491]
+shape = SubResource("RectangleShape2D_r8thq")
+
+[node name="TopCollision" type="Area2D" parent="." unique_id=753160027]
+position = Vector2(0, -24)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopCollision" unique_id=2042006773]
+shape = SubResource("RectangleShape2D_shnb5")
+
+[node name="BottomCollision" type="Area2D" parent="." unique_id=1663363841]
+position = Vector2(0, 24)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomCollision" unique_id=1141546278]
+shape = SubResource("RectangleShape2D_shnb5")
+
+[node name="LeftCollision" type="Area2D" parent="." unique_id=1021758258]
+position = Vector2(-24, 0)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftCollision" unique_id=1709153518]
+shape = SubResource("RectangleShape2D_shnb5")
+
+[node name="RightCollision" type="Area2D" parent="." unique_id=1954545032]
+position = Vector2(24, 0)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightCollision" unique_id=1925110213 groups=["movable"]]
+shape = SubResource("RectangleShape2D_shnb5")
+
+[node name="RayUp" type="RayCast2D" parent="." unique_id=317634127]
+target_position = Vector2(0, -40)
+collision_mask = 3
+
+[node name="RayDown" type="RayCast2D" parent="." unique_id=148272040]
+target_position = Vector2(0, 40)
+collision_mask = 3
+
+[node name="RayLeft" type="RayCast2D" parent="." unique_id=1455881633]
+target_position = Vector2(-40, 0)
+collision_mask = 3
+
+[node name="RayRight" type="RayCast2D" parent="." unique_id=1984528094]
+target_position = Vector2(40, 0)
+collision_mask = 3
+
+[connection signal="body_entered" from="TopCollision" to="." method="_on_top_collision_body_entered"]
+[connection signal="body_entered" from="BottomCollision" to="." method="_on_bottom_collision_body_entered"]
+[connection signal="body_entered" from="LeftCollision" to="." method="_on_left_collision_body_entered"]
+[connection signal="body_entered" from="RightCollision" to="." method="_on_right_collision_body_entered"]

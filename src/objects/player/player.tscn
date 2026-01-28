@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://iyto7vy3t4vu"]
+
+[ext_resource type="Script" uid="uid://cg2x1b33sdavc" path="res://src/objects/player/player.gd" id="1_bxhu7"]
+[ext_resource type="Texture2D" uid="uid://3sp0ractpnii" path="res://assets/placeholders/player_marx_placeholder.png" id="2_7nd6e"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hdm51"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1r1iw"]
+size = Vector2(62, 62)
+
+[node name="Player" type="AnimatableBody2D" unique_id=1781656831 node_paths=PackedStringArray("RayUP", "RayDown", "RayLeft", "RayRight")]
+physics_material_override = SubResource("PhysicsMaterial_hdm51")
+script = ExtResource("1_bxhu7")
+RayUP = NodePath("RayUp")
+RayDown = NodePath("RayDown")
+RayLeft = NodePath("RayLeft")
+RayRight = NodePath("RayRight")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=129878937]
+position_smoothing_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=92725933]
+texture = ExtResource("2_7nd6e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1445255184]
+shape = SubResource("RectangleShape2D_1r1iw")
+
+[node name="RayUp" type="RayCast2D" parent="." unique_id=785662659]
+unique_name_in_owner = true
+target_position = Vector2(0, -40)
+collision_mask = 3
+
+[node name="RayDown" type="RayCast2D" parent="." unique_id=1317153643]
+unique_name_in_owner = true
+target_position = Vector2(0, 40)
+collision_mask = 3
+
+[node name="RayLeft" type="RayCast2D" parent="." unique_id=2085106451]
+unique_name_in_owner = true
+target_position = Vector2(-40, 0)
+collision_mask = 3
+
+[node name="RayRight" type="RayCast2D" parent="." unique_id=1250074785]
+unique_name_in_owner = true
+target_position = Vector2(40, 0)
+collision_mask = 3
