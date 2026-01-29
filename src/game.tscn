@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://iyto7vy3t4vu" path="res://src/objects/player/player.tscn" id="1_7uq6d"]
 [ext_resource type="PackedScene" uid="uid://c0i1pixjjni20" path="res://src/objects/props/caixa/caixa.tscn" id="2_3msxb"]
+[ext_resource type="PackedScene" uid="uid://yksp1gxpa38n" path="res://src/objects/mobs/mob.tscn" id="3_xq6wo"]
+[ext_resource type="PackedScene" uid="uid://bo6s1qcpg4btt" path="res://src/objects/props/mask/mask.tscn" id="4_kc8ui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3msxb"]
 size = Vector2(64, 64)
@@ -9,7 +11,7 @@ size = Vector2(64, 64)
 [node name="Game" type="Node2D" unique_id=2129355768]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2109665768]
-collision_layer = 2
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1643596592]
 shape = SubResource("RectangleShape2D_3msxb")
@@ -18,4 +20,34 @@ shape = SubResource("RectangleShape2D_3msxb")
 position = Vector2(64, 64)
 
 [node name="Caixa" parent="." unique_id=497083791 instance=ExtResource("2_3msxb")]
-position = Vector2(-64, 64)
+position = Vector2(-65, 64)
+
+[node name="Mob" parent="." unique_id=549257478 instance=ExtResource("3_xq6wo")]
+position = Vector2(128, 0)
+
+[node name="Mob2" parent="." unique_id=722864731 instance=ExtResource("3_xq6wo")]
+position = Vector2(64, -128)
+object_color = 1
+
+[node name="Mob3" parent="." unique_id=1450626509 instance=ExtResource("3_xq6wo")]
+position = Vector2(-128, -128)
+object_color = 2
+
+[node name="Mob4" parent="." unique_id=167415718 instance=ExtResource("3_xq6wo")]
+position = Vector2(-192, 0)
+object_color = 3
+
+[node name="Mask" parent="." unique_id=1558232076 instance=ExtResource("4_kc8ui")]
+position = Vector2(192, -64)
+
+[node name="Mask2" parent="." unique_id=1639125321 instance=ExtResource("4_kc8ui")]
+position = Vector2(-192, 128)
+color = 1
+
+[node name="Mask3" parent="." unique_id=1495744995 instance=ExtResource("4_kc8ui")]
+position = Vector2(192, 192)
+color = 2
+
+[node name="Mask4" parent="." unique_id=1575549818 instance=ExtResource("4_kc8ui")]
+position = Vector2(256, 64)
+color = 3

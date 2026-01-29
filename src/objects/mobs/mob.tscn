@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://yksp1gxpa38n"]
+
+[ext_resource type="Script" uid="uid://7biolprmv6o7" path="res://src/objects/mobs/mob.gd" id="1_ak6kd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c54hl"]
+size = Vector2(64, 64)
+
+[node name="Mob" type="AnimatableBody2D" unique_id=722864731 node_paths=PackedStringArray("RayUP", "RayDown", "RayLeft", "RayRight")]
+script = ExtResource("1_ak6kd")
+object_color = 0
+RayUP = NodePath("RayUp")
+RayDown = NodePath("RayDown")
+RayLeft = NodePath("RayLeft")
+RayRight = NodePath("RayRight")
+metadata/_custom_type_script = "uid://dqkawl750gyc7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=286500036]
+shape = SubResource("RectangleShape2D_c54hl")
+
+[node name="RayUp" type="RayCast2D" parent="." unique_id=1873482018]
+target_position = Vector2(0, -40)
+
+[node name="RayDown" type="RayCast2D" parent="." unique_id=1155496509]
+target_position = Vector2(0, 40)
+
+[node name="RayLeft" type="RayCast2D" parent="." unique_id=1607925928]
+target_position = Vector2(-40, 0)
+
+[node name="RayRight" type="RayCast2D" parent="." unique_id=2127673004]
+target_position = Vector2(40, 0)
+
+[node name="Label" type="Label" parent="." unique_id=1226820815]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mob"

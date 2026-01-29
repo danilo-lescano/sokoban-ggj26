@@ -14,6 +14,10 @@ config/name="sokoban-ggj26"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Game="*uid://cdnpo4sjmjqs2"
+
 [debug]
 
 gdscript/warnings/untyped_declaration=1

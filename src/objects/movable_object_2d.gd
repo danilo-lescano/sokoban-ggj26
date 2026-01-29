@@ -15,19 +15,6 @@ enum State { IDLE, MOVING }
 @export var RayRight: RayCast2D
 
 
-func check_move(direction: Vector2) -> bool:
-	if direction == Vector2.UP and RayUP.get_collider() == null:
-		return true
-	elif direction == Vector2.DOWN and RayDown.get_collider() == null:
-		return true
-	elif direction == Vector2.LEFT and RayLeft.get_collider() == null:
-		return true
-	elif direction == Vector2.RIGHT and RayRight.get_collider() == null:
-		return true
-	else:
-		return false
-
-
 func move_to(direction: Vector2) -> void:
 	var tween: Tween = create_tween()
 

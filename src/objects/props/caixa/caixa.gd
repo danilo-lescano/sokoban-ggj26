@@ -1,20 +1,37 @@
+class_name PushableObject
 extends MovableObject2D
 
-func _on_top_collision_body_entered(body: Node2D) -> void:
-	if check_move(Vector2.DOWN):
-		move_to(Vector2.DOWN)
+@export var object_color: Game.MaskColor = Game.MaskColor.NO_COLOR
 
 
-func _on_bottom_collision_body_entered(body: Node2D) -> void:
-	if check_move(Vector2.UP):
-		move_to(Vector2.UP)
+func can_be_pushed_by(player: Player) -> bool:
+	var is_no_color: bool = object_color == Game.MaskColor.NO_COLOR
+	var is_matching_color: bool = player.equipped_mask == object_color
+
+	return is_no_color or is_matching_color
 
 
-func _on_left_collision_body_entered(body: Node2D) -> void:
-	if check_move(Vector2.RIGHT):
-		move_to(Vector2.RIGHT)
+func is_direction_empty(direction: Vector2) -> bool:
+	match direction:
+		Vector2.UP:
+			if RayUP.get_collider() == null:
+				return true
+		Vector2.DOWN:
+			if RayDown.get_collider() == null:
+				return true
+		Vector2.LEFT:
+			if RayLeft.get_collider() == null:
+				return true
+		Vector2.RIGHT:
+			if RayRight.get_collider() == null:
+				return true
+
+	return false
 
 
-func _on_right_collision_body_entered(body: Node2D) -> void:
-	if check_move(Vector2.LEFT):
-		move_to(Vector2.LEFT)
+func try_pushing(player: Player, direction: Vector2) -> bool:
+	if can_be_pushed_by(player) and is_direction_empty(direction):
+		move_to(direction)
+		return true
+	else:
+		return false

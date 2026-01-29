@@ -8,13 +8,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1r1iw"]
 size = Vector2(62, 62)
 
-[node name="Player" type="AnimatableBody2D" unique_id=1781656831 node_paths=PackedStringArray("RayUP", "RayDown", "RayLeft", "RayRight")]
+[node name="Player" type="AnimatableBody2D" unique_id=265606514 node_paths=PackedStringArray("RayUP", "RayDown", "RayLeft", "RayRight")]
 physics_material_override = SubResource("PhysicsMaterial_hdm51")
 script = ExtResource("1_bxhu7")
 RayUP = NodePath("RayUp")
 RayDown = NodePath("RayDown")
 RayLeft = NodePath("RayLeft")
 RayRight = NodePath("RayRight")
+metadata/_custom_type_script = "uid://cg2x1b33sdavc"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=129878937]
 position_smoothing_enabled = true
@@ -44,3 +45,13 @@ collision_mask = 3
 unique_name_in_owner = true
 target_position = Vector2(40, 0)
 collision_mask = 3
+
+[node name="Label" type="Label" parent="." unique_id=1186310455]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.0
+offset_right = 33.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "no mask"
