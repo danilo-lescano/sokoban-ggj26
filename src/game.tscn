@@ -1,53 +1,54 @@
-[gd_scene format=3 uid="uid://4sj2ub4fjpt0"]
+[gd_scene load_steps=7 format=3 uid="uid://4sj2ub4fjpt0"]
 
 [ext_resource type="PackedScene" uid="uid://iyto7vy3t4vu" path="res://src/objects/player/player.tscn" id="1_7uq6d"]
+[ext_resource type="PackedScene" uid="uid://cipi3uh1vknvh" path="res://src/objects/props/wall/bloqueio.tscn" id="1_bs6l1"]
 [ext_resource type="PackedScene" uid="uid://c0i1pixjjni20" path="res://src/objects/props/caixa/caixa.tscn" id="2_3msxb"]
 [ext_resource type="PackedScene" uid="uid://yksp1gxpa38n" path="res://src/objects/mobs/mob.tscn" id="3_xq6wo"]
 [ext_resource type="PackedScene" uid="uid://bo6s1qcpg4btt" path="res://src/objects/props/mask/mask.tscn" id="4_kc8ui"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3msxb"]
-size = Vector2(64, 64)
+[sub_resource type="TileSet" id="TileSet_kc8ui"]
+tile_size = Vector2i(64, 64)
 
-[node name="Game" type="Node2D" unique_id=2129355768]
+[node name="Game" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2109665768]
-collision_layer = 3
+[node name="StaticBody2D" parent="." instance=ExtResource("1_bs6l1")]
+position = Vector2(-32, -33)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1643596592]
-shape = SubResource("RectangleShape2D_3msxb")
+[node name="Player" parent="." instance=ExtResource("1_7uq6d")]
+position = Vector2(32, 31)
 
-[node name="Player" parent="." unique_id=819066437 instance=ExtResource("1_7uq6d")]
-position = Vector2(64, 64)
+[node name="Caixa" parent="." instance=ExtResource("2_3msxb")]
+position = Vector2(-97, 31)
 
-[node name="Caixa" parent="." unique_id=497083791 instance=ExtResource("2_3msxb")]
-position = Vector2(-65, 64)
+[node name="Mob" parent="." instance=ExtResource("3_xq6wo")]
+position = Vector2(96, -33)
 
-[node name="Mob" parent="." unique_id=549257478 instance=ExtResource("3_xq6wo")]
-position = Vector2(128, 0)
-
-[node name="Mob2" parent="." unique_id=722864731 instance=ExtResource("3_xq6wo")]
-position = Vector2(64, -128)
+[node name="Mob2" parent="." instance=ExtResource("3_xq6wo")]
+position = Vector2(32, -161)
 object_color = 1
 
-[node name="Mob3" parent="." unique_id=1450626509 instance=ExtResource("3_xq6wo")]
-position = Vector2(-128, -128)
+[node name="Mob3" parent="." instance=ExtResource("3_xq6wo")]
+position = Vector2(-160, -161)
 object_color = 2
 
-[node name="Mob4" parent="." unique_id=167415718 instance=ExtResource("3_xq6wo")]
-position = Vector2(-192, 0)
+[node name="Mob4" parent="." instance=ExtResource("3_xq6wo")]
+position = Vector2(-224, -33)
 object_color = 3
 
-[node name="Mask" parent="." unique_id=1558232076 instance=ExtResource("4_kc8ui")]
-position = Vector2(192, -64)
+[node name="Mask" parent="." instance=ExtResource("4_kc8ui")]
+position = Vector2(160, -97)
 
-[node name="Mask2" parent="." unique_id=1639125321 instance=ExtResource("4_kc8ui")]
-position = Vector2(-192, 128)
+[node name="Mask2" parent="." instance=ExtResource("4_kc8ui")]
+position = Vector2(-224, 95)
 color = 1
 
-[node name="Mask3" parent="." unique_id=1495744995 instance=ExtResource("4_kc8ui")]
-position = Vector2(192, 192)
+[node name="Mask3" parent="." instance=ExtResource("4_kc8ui")]
+position = Vector2(160, 159)
 color = 2
 
-[node name="Mask4" parent="." unique_id=1575549818 instance=ExtResource("4_kc8ui")]
-position = Vector2(256, 64)
+[node name="Mask4" parent="." instance=ExtResource("4_kc8ui")]
+position = Vector2(224, 31)
 color = 3
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_kc8ui")

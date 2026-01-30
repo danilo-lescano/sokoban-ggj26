@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwrepx73yynax"]
+
+[ext_resource type="PackedScene" uid="uid://ddsp1thn0m1lx" path="res://src/objects/gerente_fase/gerente_fase.tscn" id="1_psdsg"]
+
+[node name="Game" type="Node2D"]
+
+[node name="gerente_fase" parent="." instance=ExtResource("1_psdsg")]
+numero_fase = 2
