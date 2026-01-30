@@ -12,6 +12,7 @@ var cores: Dictionary = {
 @onready var sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
+	$Label.text = cores.find_key(color)
 
 	match color:
 		Game.MaskColor.RED:
