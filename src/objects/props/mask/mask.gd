@@ -1,13 +1,5 @@
 extends Area2D
 
-var cores: Dictionary = {
-	"red mask": 0,
-	"blue mask": 1,
-	"yellow mask": 2,
-	"green mask": 3,
-	"no mask": 4,
-}
-
 @export var color: Game.MaskColor = Game.MaskColor.RED
 @onready var sprite: Sprite2D = $Sprite2D
 

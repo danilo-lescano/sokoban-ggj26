@@ -1,19 +1,13 @@
 class_name Player
 extends MovableObject2D
 
-var cores: Dictionary = {
-	"red mask": 0,
-	"blue mask": 1,
-	"yellow mask": 2,
-	"green mask": 3,
-	"no mask": 4,
-}
-
 @export var equipped_mask: Game.MaskColor = Game.MaskColor.NO_COLOR
+
+@onready var label: Label = $Label
 
 
 func _ready() -> void:
-	$Label.text = cores.find_key(equipped_mask)
+	label.text = Game.Masks.find_key(equipped_mask)
 
 
 func _physics_process(_delta: float) -> void:
@@ -30,7 +24,7 @@ func _physics_process(_delta: float) -> void:
 
 func equip_new_mask(color: Game.MaskColor) -> void:
 	equipped_mask = color
-	$Label.text = cores.find_key(equipped_mask)
+	label.text = Game.Masks.find_key(equipped_mask)
 
 
 func can_move_to(direction: Vector2, ray: RayCast2D) -> bool:
