@@ -22,10 +22,17 @@ func _ready() -> void:
 
 func load_json(path: String) -> Dictionary:
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		push_error("Não foi possível abrir: " + path)
+		return {}
 	var content: String = file.get_as_text()
 	file.close()
 
-	return JSON.parse_string(content)
+	var parsed = JSON.parse_string(content)
+	if typeof(parsed) != TYPE_DICTIONARY:
+		push_error("JSON inválido: " + path)
+		return {}
+	return parsed
 
 func spawn_from_map(data: Dictionary) -> void:
 	for key in data.keys():
