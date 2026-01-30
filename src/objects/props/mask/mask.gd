@@ -13,8 +13,6 @@ var cores: Dictionary = {
 
 
 func _ready() -> void:
-	$Label.text = cores.find_key(color)
-
 	match color:
 		Game.MaskColor.RED:
 			sprite.texture = preload("res://assets/placeholders/aka.png")

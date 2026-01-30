@@ -1,3 +1,4 @@
+class_name FaseManager
 extends Node2D
 
 @export var numero_fase: int = 1
