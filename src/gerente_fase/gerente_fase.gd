@@ -86,7 +86,7 @@ func spawn_from_map(data: Dictionary) -> void:
 				@warning_ignore("unsafe_property_access")
 				node.color = config["color"]
 
-			add_child(node)
+			call_deferred("add_child", node)
 
 
 func grid_to_world(grid_pos: Array) -> Vector2:

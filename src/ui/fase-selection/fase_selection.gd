@@ -4,7 +4,7 @@ const FASE_MANAGER_SCENE: PackedScene = preload("res://src/gerente_fase/gerente_
 
 
 func switch_to_fase(fase_number: int) -> void:
-	var fase_manager := FASE_MANAGER_SCENE.instantiate() as FaseManager
+	var fase_manager: FaseManager = FASE_MANAGER_SCENE.instantiate() as FaseManager
 	fase_manager.numero_fase = fase_number
 
 	get_tree().current_scene.queue_free()
