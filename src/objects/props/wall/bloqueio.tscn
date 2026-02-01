@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cipi3uh1vknvh"]
+[gd_scene format=3 uid="uid://cipi3uh1vknvh"]
 
-[ext_resource type="Texture2D" uid="uid://ou5o8ea853b8" path="res://assets/placeholders/w.png" id="1_v5242"]
+[ext_resource type="Texture2D" uid="uid://bkjhl7gf0fw6j" path="res://assets/Free Industrial Zone Tileset/1 Tiles/IndustrialTile_73.png" id="1_v5242"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3msxb"]
 size = Vector2(64, 64)
 
-[node name="block" type="StaticBody2D"]
+[node name="block" type="StaticBody2D" unique_id=29398050]
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=207426026]
 shape = SubResource("RectangleShape2D_3msxb")
 
-[node name="W" type="Sprite2D" parent="."]
+[node name="W" type="Sprite2D" parent="." unique_id=452597194]
+scale = Vector2(2, 2)
 texture = ExtResource("1_v5242")

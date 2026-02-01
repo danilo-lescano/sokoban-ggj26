@@ -1,18 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlq65s75e47to"]
+[gd_scene format=3 uid="uid://dlq65s75e47to"]
 
 [ext_resource type="Script" uid="uid://behps5b0ee6ni" path="res://src/objects/props/saida/saida.gd" id="1_r7p4f"]
-[ext_resource type="Texture2D" uid="uid://co4q1uciwn8w7" path="res://assets/placeholders/saida.png" id="2_p2vn4"]
+[ext_resource type="Texture2D" uid="uid://csmqxxnbyav7i" path="res://assets/Free Industrial Zone Tileset/1 Tiles/IndustrialTile_44.png" id="3_ctume"]
+[ext_resource type="Texture2D" uid="uid://2182745tfkt6" path="res://assets/Free Industrial Zone Tileset/1 Tiles/IndustrialTile_43.png" id="4_icr3x"]
+[ext_resource type="Texture2D" uid="uid://cfdpe1kvgqaak" path="res://assets/Free Industrial Zone Tileset/1 Tiles/IndustrialTile_34.png" id="5_mmi5i"]
+[ext_resource type="Texture2D" uid="uid://bd3pe5vi0xsm5" path="res://assets/Free Industrial Zone Tileset/1 Tiles/IndustrialTile_35.png" id="6_kdg1s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f128c"]
 size = Vector2(64, 64)
 
-[node name="saida" type="Area2D"]
+[node name="saida" type="Area2D" unique_id=234252426]
 script = ExtResource("1_r7p4f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=257172852]
 shape = SubResource("RectangleShape2D_f128c")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_p2vn4")
+[node name="IndustrialTile53" type="Sprite2D" parent="." unique_id=1150472612]
+texture = ExtResource("3_ctume")
+centered = false
+
+[node name="IndustrialTile54" type="Sprite2D" parent="." unique_id=704262219]
+position = Vector2(-32, 0)
+texture = ExtResource("4_icr3x")
+centered = false
+
+[node name="IndustrialTile55" type="Sprite2D" parent="." unique_id=1638108281]
+position = Vector2(-32, -32)
+texture = ExtResource("5_mmi5i")
+centered = false
+
+[node name="IndustrialTile56" type="Sprite2D" parent="." unique_id=1897762460]
+position = Vector2(0, -32)
+texture = ExtResource("6_kdg1s")
+centered = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
