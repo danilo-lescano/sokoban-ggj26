@@ -20,20 +20,40 @@ const scene_map: Dictionary = {
 	"S": { "scene": preload("res://src/objects/props/saida/saida.tscn"), "saida": true },
 }
 
+
 func _ready() -> void:
-	var data: = load_json("res://data/fases/fase" + str(numero_fase) + ".json")
-	spawn_from_map(data["dados"])
+	var data: Dictionary = load_json("res://data/fases/fase" + str(numero_fase) + ".json")
+	var dados: Variant = data.get("dados")
+
+	if typeof(dados) != TYPE_DICTIONARY:
+		push_error("Fase inválida: " + str(numero_fase))
+		return
+
+	@warning_ignore("unsafe_call_argument")
+	spawn_from_map(dados)
+
 
 func load_next() -> void:
-	numero_fase += 1
+	var next_fase: int = numero_fase + 1
+	var data: Dictionary = load_json("res://data/fases/fase" + str(next_fase) + ".json")
+	var dados: Variant = data.get("dados")
+
+	if typeof(dados) != TYPE_DICTIONARY:
+		push_error("Fase inválida: " + str(next_fase))
+		return
+
+	numero_fase = next_fase
+
 	clear_current_map()
-	var data := load_json("res://data/fases/fase" + str(numero_fase) + ".json")
-	spawn_from_map(data["dados"])
+	@warning_ignore("unsafe_call_argument")
+	spawn_from_map(dados)
+
 
 func clear_current_map() -> void:
-	for child in get_children():
+	for child: Node in get_children():
 		child.queue_free()
-	
+
+
 func load_json(path: String) -> Dictionary:
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	if file == null:
@@ -48,8 +68,9 @@ func load_json(path: String) -> Dictionary:
 		return { }
 	return parsed
 
-func spawn_from_map(data) -> void:
-	for key in data.keys():
+
+func spawn_from_map(data: Dictionary) -> void:
+	for key: String in data.keys():
 		if not scene_map.has(key):
 			push_warning("Sem scene mapeada para: " + key)
 			continue
@@ -66,6 +87,7 @@ func spawn_from_map(data) -> void:
 				node.color = config["color"]
 
 			add_child(node)
+
 
 func grid_to_world(grid_pos: Array) -> Vector2:
 	@warning_ignore("unsafe_call_argument")
